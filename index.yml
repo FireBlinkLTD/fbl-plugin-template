@@ -1,0 +1,55 @@
+version: 1.0.0
+requires:
+  fbl: '>=0.4.0'
+
+pipeline:
+  '--':
+    - ctx:
+        '$.fbl':
+          inline: 0.4.2
+
+    - prompt:
+        message: 'What is the name of the plugin?'
+        assignResponseTo:
+          ctx: $.name
+
+    - prompt:
+        message: 'What license you want to use?'
+        default: MIT
+        assignResponseTo:
+          ctx: $.license
+
+    - prompt:
+        message: 'Where you want to store it?'
+        default: <%- cwd %>
+        assignResponseTo:
+          ctx: $.destination
+
+    - prompt:
+        message: 'Who is the author of it?'
+        assignResponseTo:
+          ctx: $.author
+
+    - '||':
+        <$ [
+          'src',
+          'test',
+          '.gitignore',
+          '.npmignore',
+          'index.ts',
+          'tsconfig.json',
+          'tslint.json'
+        ].forEach(path => { $>
+        - cp:
+            from: templates/<$- path $>
+            to: <%- $.fs.getAbsolutePath(ctx.destination, cwd) %>/
+        <$ }); $>
+
+        <$ [
+          'LICENSE',
+          'package.json'
+        ].forEach(path => { $>
+        - '->':
+            contentFromFile: templates/<$- path $>
+            path: <%- $.fs.getAbsolutePath(ctx.destination, cwd) %>/<$- path $>
+        <$ }); $>
