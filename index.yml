@@ -1,12 +1,13 @@
 version: 1.0.0
 requires:
-  fbl: '>=0.4.0'
+  fbl: '>=0.4.3'
 
 pipeline:
   '--':
     - ctx:
-        '$.fbl':
-          inline: 0.4.2
+        '$':
+          inline:
+            fbl: 0.4.3
 
     - prompt:
         message: 'What is the name of the plugin?'
