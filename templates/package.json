@@ -11,8 +11,7 @@
     "test": "nyc --reporter=html --reporter=text mocha",
     "build": "rimraf ./dist/ && tsc",
     "lint": "tslint -c tslint.json 'src/**/*.ts' 'test/**/*.ts'",
-    "prepublishOnly": "npm run build",
-    "precommit": "npm run lint"
+    "prepublishOnly": "npm run build && npm run lint"
   },
   "author": "<%- ctx.author %>",
   "license": "<%- ctx.license %>",
@@ -29,7 +28,7 @@
     "@types/joi": "13.4.4",
     "@types/node": "10.9.4",
     "chai": "4.1.2",
-    "git-pre-commit": "2.1.4",
+    "husky": "1.1.2",
     "mocha": "5.2.0",
     "mocha-typescript": "1.1.17",
     "mochawesome": "3.0.3",
@@ -39,6 +38,11 @@
     "tslint": "5.11.0",
     "typescript": "3.0.3",
     "yarn-check": "0.0.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint"
+    }
   },
   "nyc": {
     "check-coverage": true,

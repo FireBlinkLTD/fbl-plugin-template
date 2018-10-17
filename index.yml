@@ -1,6 +1,8 @@
 version: 1.0.0
 requires:
   fbl: '>=0.4.3'
+  applications:
+   - yarn
 
 pipeline:
   '--':
@@ -11,8 +13,14 @@ pipeline:
 
     - prompt:
         message: 'What is the name of the plugin?'
+        default: <%- $.require('path').basename(cwd) %>
         assignResponseTo:
           ctx: $.name
+        schema:
+          type: string
+          maxLength: 214
+          minLength: 1
+          pattern: "^(?:@[a-z0-9-~][a-z0-9-._~]*/)?[a-z0-9-~][a-z0-9-._~]*$"
 
     - prompt:
         message: 'What license you want to use?'
@@ -27,7 +35,7 @@ pipeline:
           ctx: $.destination
 
     - prompt:
-        message: 'Who is the author of it?'
+        message: 'Who is the author?'
         assignResponseTo:
           ctx: $.author
 
@@ -54,3 +62,8 @@ pipeline:
             contentFromFile: templates/<$- path $>
             path: <%- $.fs.getAbsolutePath(ctx.destination, cwd) %>/<$- path $>
         <$ }); $>
+
+    - exec:
+        command: yarn
+        args:
+          - install
