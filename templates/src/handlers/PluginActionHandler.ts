@@ -4,10 +4,12 @@ import {IContext, IActionHandlerMetadata} from 'fbl/dist/src/interfaces';
 //import {Container} from 'typedi';
 //import {FlowService} from 'fbl/dist/src/services';
 
+const packageJson = require('../../package.json');
+
 export class PluginActionHandler extends ActionHandler {
     private static metadata = <IActionHandlerMetadata> {
         id: 'namespace.plugin-id',
-        version: '1.0.0',
+        version: packageJson.version,
         aliases: [
             // Register aliases for your action handler.
             // You can also override other plugins if you want to by specifying their id or alias in the list,

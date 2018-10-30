@@ -8,7 +8,7 @@ module.exports = <IPlugin> {
 
   description: `Plugin human readable description.`,
 
-  tags: [],
+  tags: packageJson.keywords,
 
   version: packageJson.version,
 
@@ -16,7 +16,8 @@ module.exports = <IPlugin> {
     fbl: `>=${packageJson.dependencies.fbl}`,
     plugins: {
       //pluginId: '<0.0.1'
-    }
+    },
+    applications: []
   },
 
   reporters: [],

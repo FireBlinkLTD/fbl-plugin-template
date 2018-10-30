@@ -56,5 +56,6 @@
       "dist/index.js",
       "dist/test/**/*.js"
     ]
-  }
+  },
+  "keywords": []
 }

@@ -1,4 +1,4 @@
-# generator-fbl-plugin
+# fbl-plugin-template
 
 FireBlink Logistic's plugin project generator.
 
@@ -13,5 +13,5 @@ npm install -g fbl
 Then generate your new plugin project with a just one command:
 
 ```bash
-fbl https://github.com/FireBlinkLTD/fbl-plugin-template/archive/latest.tar.gz
+fbl https://github.com/FireBlinkLTD/fbl-plugin-template/archive/master.tar.gz
 ```
