@@ -1,6 +1,6 @@
 version: 1.0.0
 requires:
-  fbl: '>=0.4.3'
+  fbl: '>=0.4.7'
   applications:
    - yarn
 
@@ -9,7 +9,7 @@ pipeline:
     - ctx:
         '$':
           inline:
-            fbl: 0.4.3
+            fbl: 0.4.7
 
     - prompt:
         message: 'What is the name of the plugin?'
