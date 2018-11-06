@@ -1,6 +1,6 @@
 version: 1.0.0
 requires:
-  fbl: '>=0.4.7'
+  fbl: '>=0.5.1'
   applications:
    - yarn
 
@@ -9,10 +9,10 @@ pipeline:
     - ctx:
         '$':
           inline:
-            fbl: 0.4.7
+            fbl: 0.5.1
 
     - prompt:
-        message: 'What is the name of the plugin?'
+        message: 'Plugin name:'
         default: <%- $.require('path').basename(cwd) %>
         assignResponseTo:
           ctx: $.name
@@ -23,19 +23,19 @@ pipeline:
           pattern: "^(?:@[a-z0-9-~][a-z0-9-._~]*/)?[a-z0-9-~][a-z0-9-._~]*$"
 
     - prompt:
-        message: 'What license you want to use?'
+        message: 'License:'
         default: MIT
         assignResponseTo:
           ctx: $.license
 
     - prompt:
-        message: 'Where you want to store it?'
+        message: 'Location:'
         default: <%- cwd %>
         assignResponseTo:
           ctx: $.destination
 
     - prompt:
-        message: 'Who is the author?'
+        message: 'Author:'
         assignResponseTo:
           ctx: $.author
 

@@ -1,6 +1,6 @@
 import {ActionHandler, ActionSnapshot} from 'fbl/dist/src/models';
 import * as Joi from 'joi';
-import {IContext, IActionHandlerMetadata} from 'fbl/dist/src/interfaces';
+import {IActionHandlerMetadata, IContext, IDelegatedParameters} from 'fbl/dist/src/interfaces';
 //import {Container} from 'typedi';
 //import {FlowService} from 'fbl/dist/src/services';
 
@@ -40,11 +40,11 @@ export class PluginActionHandler extends ActionHandler {
     // If your action handler execution should not run for some reason do that check in a method below
     // E.g. you may not want to create a new server instance if one with same id/tag already exists, but
     // you may also don't want to throw error to interrupt the deployment flow.
-    // async isShouldExecute(options: any, context: IContext, snapshot: ActionSnapshot): Promise<boolean> {
+    // async isShouldExecute(options: any, context: IContext, snapshot: ActionSnapshot, parameters: IDelegatedParameters): Promise<boolean> {
     //     return true;
     // }
 
-    async execute(options: any, context: IContext, snapshot: ActionSnapshot): Promise<void> {
+    async execute(options: any, context: IContext, snapshot: ActionSnapshot, parameters: IDelegatedParameters): Promise<void> {
         // Get file path based on the working directory (that is where flow descriptor file is hosted)
         // const flowService = Container.get(FlowService);
         // const file = flowService.getAbsolutePath(options[name].file, snapshot.wd);
