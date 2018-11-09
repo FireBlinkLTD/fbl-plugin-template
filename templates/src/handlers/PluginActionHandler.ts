@@ -9,7 +9,6 @@ const packageJson = require('../../package.json');
 export class PluginActionHandler extends ActionHandler {
     private static metadata = <IActionHandlerMetadata> {
         id: 'namespace.plugin-id',
-        version: packageJson.version,
         aliases: [
             // Register aliases for your action handler.
             // You can also override other plugins if you want to by specifying their id or alias in the list,

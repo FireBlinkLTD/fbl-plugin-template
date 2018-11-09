@@ -9,7 +9,7 @@ pipeline:
     - ctx:
         '$':
           inline:
-            fbl: 0.5.1
+            fbl: 1.0.2
 
     - prompt:
         message: 'Plugin name:'
