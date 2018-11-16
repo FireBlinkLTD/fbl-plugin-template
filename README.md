@@ -12,8 +12,19 @@ First, install [FBL](https://www.npmjs.com/package/fbl).
 npm install -g fbl
 ```
 
-Then generate your new plugin project with a just one command:
+Then generate your new plugin project with:
 
 ```bash
 fbl https://github.com/FireBlinkLTD/fbl-plugin-template/archive/master.tar.gz
+```
+
+You can also pass all the options into command itself to avoid answering prompts:
+
+```bash
+fbl \
+ -c \$.name=plugin_name \
+ -c \$.author=AuthorName \
+ -c \$.license=MIT \ 
+ -c \$.destination=/path/to/plugin_directory \
+ https://github.com/FireBlinkLTD/fbl-plugin-template/archive/master.tar.gz
 ```
