@@ -1,6 +1,6 @@
 # fbl-plugin-template
 
-[![CircleCI](https://circleci.com/gh/FireBlinkLTD/generator-fbl-plugin.svg?style=svg)](https://circleci.com/gh/FireBlinkLTD/generator-fbl-plugin)
+[![CircleCI](https://circleci.com/gh/FireBlinkLTD/generator-fbl-plugin.svg?style=svg)](https://circleci.com/gh/FireBlinkLTD/generator-fbl-plugin) [![Greenkeeper badge](https://badges.greenkeeper.io/FireBlinkLTD/fbl-plugin-template.svg)](https://greenkeeper.io/)
 
 FireBlink Logistic's plugin project generator.
 
