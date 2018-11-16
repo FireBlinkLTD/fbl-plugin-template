@@ -1,6 +1,6 @@
 version: 1.0.0
 requires:
-  fbl: '>=0.5.1'
+  fbl: '>=1.0.4'
   applications:
    - yarn
 
@@ -9,8 +9,9 @@ pipeline:
     - ctx:
         '$':
           inline:
-            fbl: 1.0.2
+            fbl: 1.0.4
 
+    <$ if (!ctx.name) { $>
     - prompt:
         message: 'Plugin name:'
         default: <%- $.require('path').basename(cwd) %>
@@ -21,23 +22,30 @@ pipeline:
           maxLength: 214
           minLength: 1
           pattern: "^(?:@[a-z0-9-~][a-z0-9-._~]*/)?[a-z0-9-~][a-z0-9-._~]*$"
+    <$ } $>
 
+    <$ if (!ctx.license) { $>
     - prompt:
         message: 'License:'
         default: MIT
         assignResponseTo:
           ctx: $.license
+    <$ } $>
 
+    <$ if (!ctx.destination) { $>
     - prompt:
         message: 'Location:'
         default: <%- cwd %>
         assignResponseTo:
           ctx: $.destination
+    <$ } $>
 
+    <$ if (!ctx.author) { $>
     - prompt:
         message: 'Author:'
         assignResponseTo:
           ctx: $.author
+    <$ } $>
 
     - '||':
         <$ [
@@ -67,3 +75,6 @@ pipeline:
         command: yarn
         args:
           - install
+        wd: <%- ctx.destination %>
+        options:
+          verbose: true

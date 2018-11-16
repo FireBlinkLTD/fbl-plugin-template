@@ -4,8 +4,6 @@ import {IActionHandlerMetadata, IContext, IDelegatedParameters} from 'fbl/dist/s
 //import {Container} from 'typedi';
 //import {FlowService} from 'fbl/dist/src/services';
 
-const packageJson = require('../../package.json');
-
 export class PluginActionHandler extends ActionHandler {
     private static metadata = <IActionHandlerMetadata> {
         id: 'namespace.plugin-id',

@@ -1,0 +1,37 @@
+version: 2
+
+defaults: &defaults
+  working_directory: ~/repo
+  docker:
+    - image: circleci/node:8
+
+jobs:
+  build:
+    <<: *defaults
+    steps:
+      - checkout
+
+      # install fbl
+      - run: sudo npm i -g fbl
+
+      # prepare dir
+      - run: mkdir test
+
+      # generate plugin
+      - run: fbl -c \$.author=Foo -c \$.license=MIT -c \$.destination=./test -c \$.name=test ./
+
+      # build generated plugin
+      # note: `yarn install` is part of plugin generator flow, so all dependencies should already be installed
+      - run:
+          command: yarn build
+          working_directory: ~/repo/test
+
+      # test generated plugin
+      - run:
+          command: yarn test
+          working_directory: ~/repo/test
+
+      # test for outdated packages
+      - run:
+          command: yarn outdated
+          working_directory: ~/repo/test

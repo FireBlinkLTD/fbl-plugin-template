@@ -2,6 +2,7 @@ import {suite, test} from 'mocha-typescript';
 import {PluginActionHandler} from '../../../src/handlers';
 import {IContext} from 'fbl/dist/src/interfaces';
 import {ActionSnapshot} from 'fbl/dist/src/models';
+import {ContextUtil} from 'fbl/dist/src/utils';
 import * as assert from 'assert';
 import {Container} from 'typedi';
 import {ActionHandlersRegistry, FlowService} from 'fbl/dist/src/services';
@@ -9,6 +10,8 @@ import {ActionHandlersRegistry, FlowService} from 'fbl/dist/src/services';
 const chai = require('chai');
 const chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
+
+const plugin = require('../../../');
 
 @suite()
 class PluginActionHandlerTestSuite {
@@ -25,10 +28,10 @@ class PluginActionHandlerTestSuite {
             ctx: {}
         };
 
-        const snapshot = new ActionSnapshot('.', '', 0);
+        const snapshot = new ActionSnapshot('.', {}, '', 0, {});
 
         await chai.expect(
-            actionHandler.validate([], context, snapshot)
+            actionHandler.validate([], context, snapshot, {})
         ).to.be.rejected;
     }
 
@@ -40,12 +43,12 @@ class PluginActionHandlerTestSuite {
             ctx: {}
         };
 
-        const snapshot = new ActionSnapshot('.', '', 0);
+        const snapshot = new ActionSnapshot('.', {}, '', 0, {});
 
         await chai.expect(
             actionHandler.validate({
                 test: true
-            }, context, snapshot)
+            }, context, snapshot, {})
         ).to.be.not.rejected;
     }
 
@@ -55,11 +58,9 @@ class PluginActionHandlerTestSuite {
         const flowService = Container.get(FlowService);
 
         const actionHandler = new PluginActionHandler();
-        actionHandlerRegistry.register(actionHandler);
+        actionHandlerRegistry.register(actionHandler, plugin);
 
-        const context = <IContext> {
-            ctx: {}
-        };
+        const context = ContextUtil.generateEmptyContext();
 
         const options = {
             test: true
@@ -68,8 +69,10 @@ class PluginActionHandlerTestSuite {
         const snapshot = await flowService.executeAction(
             '.',
             actionHandler.getMetadata().id,
+            {},
             options,
-            context
+            context,
+            {}
         );
 
         assert(snapshot.successful);
