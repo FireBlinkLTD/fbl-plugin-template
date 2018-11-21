@@ -28,7 +28,7 @@
     "@types/joi": "14.0.0",
     "@types/node": "10.12.9",
     "chai": "4.2.0",
-    "husky": "1.1.4",
+    "husky": "1.2.0",
     "mocha": "5.2.0",
     "mocha-typescript": "1.1.17",
     "mochawesome": "3.1.1",
