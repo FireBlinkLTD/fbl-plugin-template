@@ -29,7 +29,7 @@
     "fbl": "<%- ctx.fbl %>",
     "@types/chai": "4.1.7",
     "@types/joi": "14.0.0",
-    "@types/node": "10.12.9",
+    "@types/node": "10.12.10",
     "chai": "4.2.0",
     "husky": "1.2.0",
     "mocha": "5.2.0",
