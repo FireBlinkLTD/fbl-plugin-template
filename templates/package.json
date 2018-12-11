@@ -16,9 +16,7 @@
   "author": "<%- ctx.author %>",
   "license": "<%- ctx.license %>",
   "dependencies": {
-    "chai-as-promised": "7.1.1",
-    "joi": "14.3.0",
-    "reflect-metadata": "0.1.12",
+    "joi": "14.3.0",    
     "typedi": "0.8.0"
   },
   "peerDependencies": {
@@ -30,6 +28,7 @@
     "@types/joi": "14.0.0",
     "@types/node": "10.12.12",
     "chai": "4.2.0",
+    "chai-as-promised": "7.1.1",
     "husky": "1.2.0",
     "mocha": "5.2.0",
     "mocha-typescript": "1.1.17",
