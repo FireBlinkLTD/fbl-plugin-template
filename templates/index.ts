@@ -1,4 +1,4 @@
-import {IPlugin} from "fbl/dist/src/interfaces";
+import {IPlugin} from "fbl";
 import {PluginActionHandler} from "./src/handlers";
 
 const packageJson = require('../package.json');

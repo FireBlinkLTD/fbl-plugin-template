@@ -1,8 +1,13 @@
-import {ActionHandler, ActionSnapshot} from 'fbl/dist/src/models';
+import {
+    ActionHandler, 
+    ActionSnapshot,
+    IActionHandlerMetadata, 
+    IContext, 
+    IDelegatedParameters,
+//    FlowService,
+} from 'fbl';
 import * as Joi from 'joi';
-import {IActionHandlerMetadata, IContext, IDelegatedParameters} from 'fbl/dist/src/interfaces';
 //import {Container} from 'typedi';
-//import {FlowService} from 'fbl/dist/src/services';
 
 export class PluginActionHandler extends ActionHandler {
     private static metadata = <IActionHandlerMetadata> {
