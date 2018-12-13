@@ -25,7 +25,7 @@
   "devDependencies": {
     "fbl": "<%- ctx.fbl.current %>",
     "@types/chai": "4.1.7",
-    "@types/joi": "14.0.0",
+    "@types/joi": "14.0.1",
     "@types/node": "10.12.12",
     "chai": "4.2.0",
     "chai-as-promised": "7.1.1",
