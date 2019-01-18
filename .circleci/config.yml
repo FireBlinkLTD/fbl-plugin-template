@@ -18,7 +18,7 @@ jobs:
       - run: mkdir test
 
       # generate plugin
-      - run: fbl -c \$.author=Foo -c \$.license=MIT -c \$.destination=./test -c \$.name=test ./
+      - run: fbl -a \$.ctx.author=Foo -a \$.ctx.license=MIT -a \$.ctx.destination=./test -a \$.ctx.name=test ./
 
       # build generated plugin
       # note: `yarn install` is part of plugin generator flow, so all dependencies should already be installed

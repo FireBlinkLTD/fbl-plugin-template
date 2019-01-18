@@ -1,18 +1,11 @@
-.idea/
-*.iml
+# ignore all
+*
 
-.nyc_output/
-coverage/
-mochawesome-report/
-node_modules/
+# expect compiled sources
+!dist/index.js
+!dist/index.js.map
+!dist/index.d.ts
 
-.gitignore
-
-src/
-test/
-tslint.json
-tsconfig.json
-
-index.ts
-
-yarn-error.log
+!dist/src/**/*.js
+!dist/src/**/*.js.map
+!dist/src/**/*.d.ts
