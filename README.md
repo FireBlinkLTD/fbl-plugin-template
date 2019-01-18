@@ -22,9 +22,9 @@ You can also pass all the options into command itself to avoid answering prompts
 
 ```bash
 fbl \
- -c \$.name=plugin_name \
- -c \$.author=AuthorName \
- -c \$.license=MIT \ 
- -c \$.destination=/path/to/plugin_directory \
+ -a \$.ctx.name=plugin_name \
+ -a \$.ctx.author=AuthorName \
+ -a \$.ctx.license=MIT \ 
+ -a \$.ctx.destination=/path/to/plugin_directory \
  https://github.com/FireBlinkLTD/fbl-plugin-template/archive/master.tar.gz
 ```
