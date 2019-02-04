@@ -43,7 +43,7 @@
     "rimraf": "2.6.3",
     "source-map-support": "0.5.10",
     "tslint": "5.12.1",
-    "tslint-config-prettier": "1.17.0",
+    "tslint-config-prettier": "1.18.0",
     "typescript": "3.3.1"
   },
   "keywords": []
