@@ -1,6 +1,6 @@
 version: 1.0.0
 requires:
-  fbl: '>=1.5.0'
+  fbl: '>=1.7.1'
   applications:
    - yarn
 
@@ -10,8 +10,8 @@ pipeline:
         '$':
           inline:
             fbl: 
-              current: '1.5.1'
-              range: '>=1.5.1 <2.0.0' 
+              current: '1.7.1'
+              range: '>=1.7.1 <2.0.0' 
 
     <$ if (!ctx.name) { $>
     - prompt:
@@ -59,6 +59,7 @@ pipeline:
           '.gitignore',
           '.huskyrc.yml',
           '.lintstagedrc.yml',
+          '.mocharc.yml',
           '.npmignore',
           '.prettierignore',
           '.prettierrc.yml',

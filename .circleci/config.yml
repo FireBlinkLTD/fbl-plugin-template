@@ -24,7 +24,7 @@ jobs:
       # note: `yarn install` is part of plugin generator flow, so all dependencies should already be installed
       - run:
           command: yarn build
-          working_directory: ~/repo/test
+          working_directory: ~/repo/test  
 
       # test generated plugin
       - run:
@@ -32,6 +32,6 @@ jobs:
           working_directory: ~/repo/test
 
       # test for outdated packages
-      - run:
-          command: yarn outdated
-          working_directory: ~/repo/test
+      # - run:
+      #     command: yarn outdated
+      #     working_directory: ~/repo/test

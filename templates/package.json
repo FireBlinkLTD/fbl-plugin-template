@@ -21,30 +21,53 @@
     "fbl": "<%- ctx.fbl.range %>"
   },
   "devDependencies": {
-    "@commitlint/cli": "7.5.0",
+    "@commitlint/cli": "7.5.2",
     "@commitlint/config-conventional": "7.5.0",    
     "fbl": "<%- ctx.fbl.current %>",
     "@types/chai": "4.1.7",
-    "@types/joi": "14.3.1",
-    "@types/node": "10.12.21",
+    "@types/joi": "14.3.3",
+    "@types/node": "11.13.8",
     "chai": "4.2.0",
     "chai-as-promised": "7.1.1",
-    "commitizen": "3.0.5",
-    "conventional-changelog-cli": "2.0.11",
+    "commitizen": "3.1.1",
+    "conventional-changelog-cli": "2.0.17",
     "cz-conventional-changelog": "2.1.0",
-    "husky": "1.3.1",
+    "husky": "2.1.0",
     "jsonlint": "1.6.3",
-    "lint-staged": "8.1.1",
-    "mocha": "5.2.0",
+    "lint-staged": "8.1.5",
+    "mocha": "6.1.4",
     "mocha-typescript": "1.1.17",
-    "mochawesome": "3.1.1",
-    "nyc": "13.1.0",
-    "prettier": "1.16.3",
+    "mochawesome": "3.1.2",
+    "nyc": "14.0.0",
+    "prettier": "1.17.0",
     "rimraf": "2.6.3",
-    "source-map-support": "0.5.10",
-    "tslint": "5.12.1",
-    "tslint-config-prettier": "1.17.0",
-    "typescript": "3.3.1"
+    "source-map-support": "0.5.12",
+    "ts-node": "8.1.0",
+    "tslint": "5.16.0",
+    "tslint-config-prettier": "1.18.0",
+    "typescript": "3.4.5"
+  },
+  "nyc": {
+    "cache": false,
+    "extension": [
+      ".ts"
+    ],
+    "exclude": [
+      "src/**/index.ts",
+      "src/interfaces/*.ts",
+      "**/*.d.ts",
+      "coverage/**"
+    ],
+    "check-coverage": true,
+    "per-file": true,
+    "lines": 100,
+    "statements": 100,
+    "functions": 100,
+    "branches": 100,
+    "include": [
+      "src",
+      "dist/src"
+    ]
   },
   "keywords": []
 }

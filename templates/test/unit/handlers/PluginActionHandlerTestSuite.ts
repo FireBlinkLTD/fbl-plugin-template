@@ -1,4 +1,5 @@
 import {
+    IDelegatedParameters,
     ContextUtil, 
     ActionSnapshot, 
     ActionHandlersRegistry, 
@@ -31,7 +32,7 @@ class PluginActionHandlerTestSuite {
         const snapshot = new ActionSnapshot('.', {}, '', 0, {});
 
         await chai.expect(
-            actionHandler.validate([], context, snapshot, {})
+            actionHandler.getProcessor([], context, snapshot, {}).validate()
         ).to.be.rejected;
     }
 
@@ -43,9 +44,9 @@ class PluginActionHandlerTestSuite {
         const snapshot = new ActionSnapshot('.', {}, '', 0, {});
 
         await chai.expect(
-            actionHandler.validate({
+            actionHandler.getProcessor({
                 test: true
-            }, context, snapshot, {})
+            }, context, snapshot, {}).validate()
         ).to.be.not.rejected;
     }
 
@@ -64,12 +65,16 @@ class PluginActionHandlerTestSuite {
         };
 
         const snapshot = await flowService.executeAction(
+            // wd
             '.',
-            actionHandler.getMetadata().id,
-            {},
-            options,
+            // action id with options        
+            {   
+                [actionHandler.getMetadata().id]: options
+            },
+            // shared context
             context,
-            {}
+            // delegated parameters
+            <IDelegatedParameters> {}
         );
 
         assert(snapshot.successful);
