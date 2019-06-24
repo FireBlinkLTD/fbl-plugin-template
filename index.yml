@@ -10,15 +10,14 @@ pipeline:
         '$':
           inline:
             fbl: 
-              current: '1.7.1'
-              range: '>=1.7.1 <2.0.0' 
+              current: '1.7.4'
+              range: '>=1.7.4 <2.0.0' 
 
     <$ if (!ctx.name) { $>
     - prompt:
         message: 'Plugin name:'
-        default: <%- $.require('path').basename(cwd) %>
-        assignResponseTo:
-          ctx: $.name
+        default: <%= $.require('path').basename(cwd) %>
+        assignResponseTo: $.ctx.name          
         schema:
           type: string
           maxLength: 214
@@ -30,26 +29,23 @@ pipeline:
     - prompt:
         message: 'License:'
         default: MIT
-        assignResponseTo:
-          ctx: $.license
+        assignResponseTo: $.ctx.license        
     <$ } $>
 
     <$ if (!ctx.destination) { $>
     - prompt:
         message: 'Location:'
-        default: <%- cwd %>
-        assignResponseTo:
-          ctx: $.destination
+        default: <%- $.require('path').join(cwd, ctx.name) %>
+        assignResponseTo: $.ctx.destination          
     <$ } $>
 
     <$ if (!ctx.author) { $>
     - prompt:
         message: 'Author:'
-        assignResponseTo:
-          ctx: $.author
+        assignResponseTo: $.ctx.author          
     <$ } $>
 
-    - '||':
+    - '--':
         <$ [
           'src',
           'test',
@@ -85,6 +81,6 @@ pipeline:
         command: yarn
         args:
           - install
-        wd: <%- ctx.destination %>
+        wd: '<%- ctx.destination %>'
         options:
           verbose: true
