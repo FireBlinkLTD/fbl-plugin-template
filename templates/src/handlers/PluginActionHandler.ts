@@ -1,12 +1,13 @@
 import {
     ActionHandler, 
+    ActionProcessor,
     ActionSnapshot,
     IActionHandlerMetadata, 
     IContext, 
     IDelegatedParameters,
 //    FlowService,
 } from 'fbl';
-import * as Joi from 'joi';
+import { PluginActionProcessor } from '../processors';
 //import {Container} from 'typedi';
 
 export class PluginActionHandler extends ActionHandler {
@@ -26,37 +27,11 @@ export class PluginActionHandler extends ActionHandler {
         // considerOptionsAsSecrets: true,
     };
 
-    private static validationSchema = Joi.object()
-        .min(1)
-        .required()
-        .options({abortEarly: true});
-
     getMetadata(): IActionHandlerMetadata {
         return PluginActionHandler.metadata;
     }
 
-    getValidationSchema(): Joi.SchemaLike | null {
-        return PluginActionHandler.validationSchema;
-    }
-
-    // If your action handler execution should not run for some reason do that check in a method below
-    // E.g. you may not want to create a new server instance if one with same id/tag already exists, but
-    // you may also don't want to throw error to interrupt the deployment flow.
-    // async isShouldExecute(options: any, context: IContext, snapshot: ActionSnapshot, parameters: IDelegatedParameters): Promise<boolean> {
-    //     return true;
-    // }
-
-    async execute(options: any, context: IContext, snapshot: ActionSnapshot, parameters: IDelegatedParameters): Promise<void> {
-        // Get file path based on the working directory (that is where flow descriptor file is hosted)
-        // const flowService = Container.get(FlowService);
-        // const file = flowService.getAbsolutePath(options[name].file, snapshot.wd);
-
-        // log something to be visible in reports
-        snapshot.log('Execution complete');
-
-        // Make sure to register any changes you made for options or context in the snapshot (this will help you and your
-        // users to debug the flow):
-        // snapshot.setOptions(options);
-        // snapshot.setContext(context);
+    getProcessor(options: any, context: IContext, snapshot: ActionSnapshot, parameters: IDelegatedParameters): ActionProcessor {
+        return new PluginActionProcessor(options, context, snapshot, parameters);
     }
 }
