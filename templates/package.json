@@ -21,8 +21,8 @@
     "fbl": "<%- ctx.fbl.range %>"
   },
   "devDependencies": {
-    "@commitlint/cli": "7.5.2",
-    "@commitlint/config-conventional": "7.5.0",    
+    "@commitlint/cli": "8.1.0",
+    "@commitlint/config-conventional": "8.1.0",    
     "fbl": "<%- ctx.fbl.current %>",
     "@types/chai": "4.1.7",
     "@types/joi": "14.3.3",
