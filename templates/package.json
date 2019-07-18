@@ -29,7 +29,7 @@
     "@types/node": "11.13.8",
     "chai": "4.2.0",
     "chai-as-promised": "7.1.1",
-    "commitizen": "3.1.1",
+    "commitizen": "4.0.0",
     "conventional-changelog-cli": "2.0.17",
     "cz-conventional-changelog": "2.1.0",
     "husky": "2.1.0",
